@@ -34,7 +34,7 @@ HTML/CSS for layout and styling
 
 1.Clone the repo:
 
-git clone https://github.com/your-username/weather-widget.git
+git clone https://github.com/PVildos/WeatherWidget.git
 cd weather-widget
 
 2. Open index.html in a browser of your choice.
