@@ -1,0 +1,89 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <section class="weatherContainer">
+            <section class="menuTabs">
+                <nav class="forecastTabs">
+                    <button id="nowButton"type="button">Now</button>
+                    <button id="todayButton" type="button">Today</button>
+                    <select id="selectDate">Select Date
+                        <option>Select Date</option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                    </select>
+                </nav>
+                <section class="cityElements" class="dropdownButton">
+                     <select id="selectCity">
+                        <option value="Thessaloniki, 40.6436, 22.9309">Select City</option>
+                        <option value="Thessaloniki, 40.6436, 22.9309">Thessaloniki</option>
+                        <option value="Athens, 37.9838, 23.7278">Athens</option>
+                        <option value="Heraklion, 35.3279, 25.1434">Heraklion</option>
+                        <option value="Larissa, 39.6369, 22.4176">Larissa</option>
+                        <option value="Ioannina, 39.6649, 20.8519">Ioannina</option>
+                        <option value="Patra, 38.2444, 21.7344">Patra</option>
+                        <option value="Komotini, 41.1192, 25.4053">Komotini</option>
+                        <option value="Kozani, 40.3007, 21.789">Kozani</option>
+                        <option value="Samos, 37.7543, 26.977">Samos</option>
+                     </select> 
+                </section>
+            </section>
+            <section class="currentTemperatureElements">
+                <section class="temperatureText">
+                    <h2 id="city"></h2>
+                    <h3 id="currentTemperature"></h3>
+                    <p id="weatherDescription"></p>
+                </section>
+                <img id="weatherIcon">
+            </section>
+    
+            <section class="weatherFeatures">
+                    <section class="apparentTemperature">
+                        <h2></h2>
+                        <p>Feels Like</p>
+                    </section>
+                    <section class="windSpeed">
+                        <h2></h2>
+                        <p>Wind</p>
+                    </section>
+                    <section class="windDegrees">
+                        <h2></h2>
+                        <p>Wind Deg</p>
+                    </section>
+                    <section class="humidity">
+                        <h2></h2>
+                        <p>Humidity</p>
+                    </section>
+                    <section class="precipitation">
+                        <h2></h2>
+                        <p>Precipitation</p>
+                    </section>
+                    <section class="pressure">
+                        <h2></h2>
+                        <p>Pressure</p>
+                    </section>
+            </section>
+
+            <section id="chartContainer">
+                <h2>Weekly Variation</h2>
+                <canvas id="weatherChart"></canvas>
+            </section>
+        </section>
+    </section>
+    </body>
+</html>
