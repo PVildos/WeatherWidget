@@ -20,7 +20,7 @@ async function fetchWeatherData(cityName, latitude, longitude) {
           +`apparent_temperature,precipitation_probability,wind_speed_10m,wind_direction_10m,precipitation,weather_code,surface_pressure,`
           +`cloud_cover&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,`
           +`surface_pressure,wind_speed_10m,wind_direction_10m&timezone=Europe/Moscow`);
-
+          console.log(response.data)
         let city = document.getElementById("city");
         city.textContent = cityName;
         getCurrentWeather(response.data);
@@ -430,38 +430,39 @@ function getDailyWeatherDescription(weatherData, dayIndex){
 }
 
   function getAverageApparentTemperature(weatherData, dayIndex){
-    const averageApparentTemperatureField = document.getElementById("apparentTemperature");
+    const averageApparentTemperatureField = document.querySelector(".apparentTemperature h2");
     const averageApparentTemperature = getRoundedValue(getArrayAverage(getForecastApparentTemperatures(weatherData)[dayIndex]));
+    console.log(averageApparentTemperature)
     averageApparentTemperatureField.innerText = averageApparentTemperature.toString()+" "+getCelsiusUnit(weatherData);
   }
 
   function getAverageWindSpeed(weatherData, dayIndex){
-    const averageWindSpeedField = document.getElementById("windSpeed");
-    const averagewindSpeed = getArrayAverage(getForecastWindSpeeds(weatherData)[dayIndex]);
-    averageWindSpeedField.innerText = averagewindSpeed.toString()+" "+weatherData.current_units.wind_speed_10m;;
+    const averageWindSpeedField = document.querySelector(".windSpeed h2");
+    const averagewindSpeed = getRoundedValue(getArrayAverage(getForecastWindSpeeds(weatherData)[dayIndex]));
+    averageWindSpeedField.innerText = averagewindSpeed.toString()+" "+weatherData.current_units.wind_speed_10m;
   }
 
   function getAverageWindDirection(weatherData, dayIndex){
-    const averageWindDirectionField = document.getElementById("windDegrees");
-    const averageWindDirection = getArrayAverage(getForecastWindDirections(weatherData)[dayIndex]);
+    const averageWindDirectionField = document.querySelector(".windDegrees h2");
+    const averageWindDirection = getRoundedValue(getArrayAverage(getForecastWindDirections(weatherData)[dayIndex]));
     averageWindDirectionField.innerText = averageWindDirection.toString()+" "+weatherData.current_units.wind_direction_10m;
   }
 
   function getAverageHumidity (weatherData, dayIndex){
-    const averageHumidityField = document.getElementById("humidity");
-    const averageHumidity = getArrayAverage(getForecastHumidity(weatherData)[dayIndex]);
+    const averageHumidityField = document.querySelector(".humidity h2");
+    const averageHumidity = getRoundedValue(getArrayAverage(getForecastHumidity(weatherData)[dayIndex]));
     averageHumidityField.innerText = averageHumidity.toString()+" "+weatherData.current_units.relative_humidity_2m;
   }
 
   function getAveragePrecipitation (weatherData, dayIndex){
-    const averagePrecipitationField = document.getElementById("precipitation");
-    const averagePrecipitation = getArrayAverage(getForecastPrecipitation(weatherData)[dayIndex]);
+    const averagePrecipitationField = document.querySelector(".precipitation h2");
+    const averagePrecipitation = getRoundedValue(getArrayAverage(getForecastPrecipitation(weatherData)[dayIndex]));
     averagePrecipitationField.innerText = averagePrecipitation.toString()+" "+weatherData.current_units.precipitation;
   }
 
   function getAveragePressure (weatherData, dayIndex){
-    const averagePressureField = document.getElementById("pressure");
-    const averagePressure = getArrayAverage(getForecastPressure(weatherData)[dayIndex]);
+    const averagePressureField = document.querySelector(".pressure h2");
+    const averagePressure = getRoundedValue(getArrayAverage(getForecastPressure(weatherData)[dayIndex]));
     averagePressureField.innerText = averagePressure.toString()+" "+weatherData.current_units.surface_pressure;
   }
 
@@ -474,7 +475,6 @@ function getDailyWeatherDescription(weatherData, dayIndex){
     const ctx = document.getElementById("weatherChart");
     const weeklyForecastDates = getForecastDates(weatherData);
     const weeklyForecastTemperatures = getAverageForecastTemperaturesPerDay(getForecastTemperatures(weatherData).slice(1));
-    console.log(weeklyForecastTemperatures)
     new Chart(ctx, {
       type: 'line',
       data: {
